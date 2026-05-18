@@ -21,7 +21,7 @@ import { getAllCategorias } from "../controllers/categoriaController.js"
 //Criei o router
 const router = Router()
 
-//Defini a primeira rota do Router
+//Rota GET que retorna todas as categorias
 router.get('/', getAllCategorias)
 
 export default router

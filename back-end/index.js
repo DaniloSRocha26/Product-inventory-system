@@ -8,6 +8,9 @@ import cors from "cors"
 // Importo o dotenv para poder usar as variáveis do arquivo .env
 import dotenv from "dotenv"
 
+//importo o router do categoriaRouter.js
+import categoriasRoutes from "./src/routes/categoriaRoutes.js"
+
 // Ativo o dotenv antes de qualquer coisa, para as variáveis já estarem disponíveis
 dotenv.config()
 
@@ -25,6 +28,9 @@ app.use(express.json()) // Faz o servidor entender JSON no corpo das requisiçõ
 app.get('/', (req, res) => {
     res.send("Hello World")
 })
+
+//Registro as rotas de categorias, todas acessíveis a partir de /cateogrias
+app.use('/categorias', categoriasRoutes)
 
 // Coloco o servidor para escutar na porta definida no .env
 app.listen(port, () => {
