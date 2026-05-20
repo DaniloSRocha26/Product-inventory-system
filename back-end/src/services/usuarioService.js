@@ -6,7 +6,7 @@ import db from "../config/db.js"
 //como parâmetros
 async function register(nome, email, senha){
     //bcrypt.hash está gerando um hash de senha, e 10 é o quanto o bcrypt
-    //trabalhar para gerar a senha
+    //trabalha para gerar a senha
     const hashSenha = await bcrypt.hash(senha, 10)
 
     //Está inserindo o usuário no banco com a senha criptografada
@@ -38,7 +38,7 @@ async function login(email, senha){
             throw new Error("Email ou senha incorretos")
         }
         
-        //Gera um token com o idd do usuário dentro, assinado com a chave secreta
+        //Gera um token com o id do usuário dentro, assinado com a chave secreta
         const token = jwt.sign({ id: usuario.id}, process.env.JWT_SECRET)
         return token
     } catch(error){
