@@ -19,9 +19,9 @@ import { Router } from "express"
 import { getAllCategorias } from "../controllers/categoriaController.js"
 
 //Criei o router
-const router = Router()
+const routerCategoria = Router()
 
 //Rota GET que retorna todas as categorias
-router.get('/', getAllCategorias)
+routerCategoria.get('/', getAllCategorias)
 
-export default router
+export default routerCategoria
