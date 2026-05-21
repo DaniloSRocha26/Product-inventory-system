@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
 //Registro as rotas de categorias, todas acessíveis a partir de /cateogrias
 app.use('/categorias', categoriasRoutes)
 
+//Registro as rotas de usuário no servidor, registro e login
 app.use(usuarioRoutes)
 
 // Coloco o servidor para escutar na porta definida no .env
