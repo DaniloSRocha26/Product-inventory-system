@@ -10,6 +10,7 @@ import dotenv from "dotenv"
 
 //importo o router do categoriaRouter.js
 import categoriasRoutes from "./src/routes/categoriaRoutes.js"
+import usuarioRoutes from "./src/routes/usuarioRoutes.js"
 
 // Ativo o dotenv antes de qualquer coisa, para as variáveis já estarem disponíveis
 dotenv.config()
@@ -31,6 +32,8 @@ app.get('/', (req, res) => {
 
 //Registro as rotas de categorias, todas acessíveis a partir de /cateogrias
 app.use('/categorias', categoriasRoutes)
+
+app.use(usuarioRoutes)
 
 // Coloco o servidor para escutar na porta definida no .env
 app.listen(port, () => {
