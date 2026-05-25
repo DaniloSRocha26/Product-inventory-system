@@ -16,7 +16,7 @@
 import { Router } from "express"
 
 //importei a função getAllCategorias do categoriaController.js
-import { getAllCategorias, creatingCategoria } from "../controllers/categoriaController.js"
+import { getAllCategorias, creatingCategoria, updatingCategoria, removingCategoria } from "../controllers/categoriaController.js"
 
 //Importo o middleware que valida o token JWT antes de acessar as rotas protegidas
 import autenticar from "../middlewares/auth.js"
@@ -29,5 +29,11 @@ routerCategoria.get('/', autenticar, getAllCategorias)
 
 //Rota POST que cria uma nova categoria para o usuário logado,  autenticar valida o token antes
 routerCategoria.post('/', autenticar, creatingCategoria)
+
+//Rota UPDATE que atualiza a categoria selecionada pelo usuário
+routerCategoria.put('/:id', autenticar, updatingCategoria)
+
+//Rota DELETE que deleta a categoria selecionada pelo usuário
+routerCategoria.delete('/:id', autenticar, removingCategoria)
 
 export default routerCategoria
