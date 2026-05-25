@@ -16,12 +16,18 @@
 import { Router } from "express"
 
 //importei a função getAllCategorias do categoriaController.js
-import { getAllCategorias } from "../controllers/categoriaController.js"
+import { getAllCategorias, creatingCategoria } from "../controllers/categoriaController.js"
+
+//Importo o middleware que valida o token JWT antes de acessar as rotas protegidas
+import autenticar from "../middlewares/auth.js"
 
 //Criei o router
 const routerCategoria = Router()
 
-//Rota GET que retorna todas as categorias
-routerCategoria.get('/', getAllCategorias)
+//Rota GET que retorna todas as categorias do usuário logado, autenticar valida o token antes
+routerCategoria.get('/', autenticar, getAllCategorias)
+
+//Rota POST que cria uma nova categoria para o usuário logado,  autenticar valida o token antes
+routerCategoria.post('/', autenticar, creatingCategoria)
 
 export default routerCategoria
