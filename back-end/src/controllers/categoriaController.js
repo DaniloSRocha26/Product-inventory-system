@@ -1,5 +1,5 @@
 //Importo a função getAll do categoria.Service.js
-import { create, getAll } from "../services/categoriaService.js";
+import { create, getAll, update, remove } from "../services/categoriaService.js";
 
 //Faço uma função assíncrona para pegar todas as categorias e devolver
 //como um json
@@ -29,4 +29,26 @@ async function creatingCategoria(req, res){
     }
 }
 
-export {getAllCategorias, creatingCategoria}
+//Atualiza o nome de uma categoria pelo id dela, que vem na URL
+async function updatingCategoria(req, res){
+    try{
+
+        const updateCategoria = await update(req.params.id, req.body.nome)
+        res.status(200).json(updateCategoria)
+    }catch(error){
+        res.status(500).json({ message: error.message})
+    }
+}
+
+//Remove uma categoria pelo id dela, que vem na URL
+async function removingCategoria(req, res){
+    try{
+
+        await remove(req.params.id)
+        res.status(200).json({ message: "Categoria removida com sucesso" })
+    }catch(error){
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export {getAllCategorias, creatingCategoria, updatingCategoria, removingCategoria}
