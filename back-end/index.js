@@ -8,9 +8,10 @@ import cors from "cors"
 // Importo o dotenv para poder usar as variáveis do arquivo .env
 import dotenv from "dotenv"
 
-//importo o router do categoriaRouter.js
+//importando os routers
 import categoriasRoutes from "./src/routes/categoriaRoutes.js"
 import usuarioRoutes from "./src/routes/usuarioRoutes.js"
+import produtosRoutes from "./src/routes/produtoRoutes.js"
 
 // Ativo o dotenv antes de qualquer coisa, para as variáveis já estarem disponíveis
 dotenv.config()
@@ -32,6 +33,9 @@ app.get('/', (req, res) => {
 
 //Registro as rotas de categorias, todas acessíveis a partir de /cateogrias
 app.use('/categorias', categoriasRoutes)
+
+//Registro as rotas de produtos
+app.use('/produtos', produtosRoutes)
 
 //Registro as rotas de usuário no servidor, registro e login
 app.use(usuarioRoutes)
