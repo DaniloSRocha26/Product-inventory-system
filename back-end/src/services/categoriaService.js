@@ -14,14 +14,14 @@ async function create(usuario_id, nome){
 }
 
 //Adicionei uma função de update que atualiza o nome da tabela, filtrando pelo seu id
-async function update(id, nome){
-    const result = await pool.query('UPDATE categorias SET nome = $1 WHERE id = $2 RETURNING *', [nome,  id])
+async function update(id, nome, usuario_id){
+    const result = await pool.query('UPDATE categorias SET nome = $1 WHERE id = $2 AND usuario_id = $3 RETURNING *', [nome,  id, usuario_id])
     return result.rows[0]
 }
 
 //Adicionei uma função de remove que remove uma tabela, filtrando pelo seu id
-async function remove(id){
-    const result = await pool.query('DELETE FROM categorias WHERE id = $1', [id])
+async function remove(id, usuario_id){
+    const result = await pool.query('DELETE FROM categorias WHERE id = $1 AND usuario_id = $2', [id, usuario_id])
 }
 
 export {getAll, create, update, remove}

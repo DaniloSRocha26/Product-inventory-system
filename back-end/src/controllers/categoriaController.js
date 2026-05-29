@@ -33,7 +33,7 @@ async function creatingCategoria(req, res){
 async function updatingCategoria(req, res){
     try{
 
-        const updateCategoria = await update(req.params.id, req.body.nome)
+        const updateCategoria = await update(req.params.id, req.body.nome, req.user.id)
         res.status(200).json(updateCategoria)
     }catch(error){
         res.status(500).json({ message: error.message})
@@ -44,7 +44,7 @@ async function updatingCategoria(req, res){
 async function removingCategoria(req, res){
     try{
 
-        await remove(req.params.id)
+        await remove(req.params.id, req.user.id)
         res.status(200).json({ message: "Categoria removida com sucesso" })
     }catch(error){
         res.status(500).json({ message: error.message })
