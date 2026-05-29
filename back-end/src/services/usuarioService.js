@@ -11,7 +11,7 @@ async function register(nome, email, senha){
 
     //Está inserindo o usuário no banco com a senha criptografada
     const resultado = await db.query(
-        'INSERT INTO usuarios (nome, email, senha) VALUES ($1, $2, $3) RETURNING *',
+        'INSERT INTO usuarios (nome, email, senha) VALUES ($1, $2, $3) RETURNING id, nome, email, created_at ',
         [nome, email, hashSenha]
     );
     //Está pegando o primeiro e unico resultado e retornando
